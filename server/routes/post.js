@@ -1,5 +1,6 @@
 import express from "express"
 import postModel from "../model/postModel.js"
+import reviewModel from "../model/reviewModel.js"
 import mongoose from "mongoose"
 
 const router = express.Router()
@@ -50,6 +51,7 @@ router.delete("/:id", async (r, w) => {
     }
     try {
         await postModel.findByIdAndRemove(id)
+        await reviewModel.deleteMany({articleId: id})
         w.status(200).json({ message: `${id} deleted` })
     } catch (err) {
         w.status(400).json({ message: err.message })

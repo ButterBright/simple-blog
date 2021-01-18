@@ -1,7 +1,15 @@
 import styled from "styled-components"
 import { Link } from "react-router-dom"
+import { useSelector } from "react-redux"
+import { logOut } from "../actions/user"
+import { useDispatch } from "react-redux"
 
 function Header() {
+    const username = useSelector(state => state.user)?.user?.username
+    const dispatch = useDispatch()
+    function handleLogout() {
+        logOut()(dispatch)
+    }
     return (
         <Container>
             <Title>ButterBright</Title>
@@ -9,12 +17,27 @@ function Header() {
                 <SubTitle>
                     Just direct your feet on the sunny side of the street.
                 </SubTitle>
-                <Link to="/" style={{textDecoration: "none", color: "black"}}>
+                {!username ? (
+                    <Link
+                        to="/login"
+                        style={{ textDecoration: "none", color: "black" }}
+                    >
+                        <StyledFont>login</StyledFont>
+                    </Link>
+                ) : (
+                    <StyledFont onClick={handleLogout}>logout</StyledFont>
+                )}
+                <Link to="/" style={{ textDecoration: "none", color: "black" }}>
                     <StyledFont>Home</StyledFont>
                 </Link>
-                <Link to="/editlist" style={{textDecoration: "none", color: "black"}}>
-                    <div>Edit Center</div>
-                </Link>
+                {username === "Bright" && (
+                    <Link
+                        to="/editlist"
+                        style={{ textDecoration: "none", color: "black" }}
+                    >
+                        <div>Edit Center</div>
+                    </Link>
+                )}
             </Container2>
         </Container>
     )
@@ -52,6 +75,7 @@ const SubTitle = styled.div`
 
 const StyledFont = styled.div`
     margin-right: 2rem;
+    cursor: pointer;
 `
 
 export default Header

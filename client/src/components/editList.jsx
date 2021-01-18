@@ -3,8 +3,12 @@ import InfoList from "./infoList"
 import GlobalStyle from "./globalStyle"
 import styled from "styled-components"
 import { Link } from "react-router-dom"
+import { useSelector } from "react-redux"
 
 function EditList() {
+    const username = useSelector(state => state.user)?.user?.username
+    if (username !== "Bright")
+        return <div>Unauthorized!</div>
     return (
         <div>
             <GlobalStyle />

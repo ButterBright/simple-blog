@@ -9,7 +9,7 @@ const auth = (username, password, history) => async dispatch => {
         const user = await axios.get(`http://localhost:5000/users/${username}`)
         dispatch({
             type: "AUTH",
-            payload: {...res.data, username: username, img: user.data.img},
+            payload: { ...res.data, username: username, img: user.data.img },
         })
         alert("successfully login")
         history.push("/")
@@ -17,6 +17,12 @@ const auth = (username, password, history) => async dispatch => {
         alert("wrong username or password")
         console.log(err.message)
     }
+}
+
+export const logOut = () => async dispatch => {
+    dispatch({
+        type: "LOGOUT",
+    })
 }
 
 export default auth

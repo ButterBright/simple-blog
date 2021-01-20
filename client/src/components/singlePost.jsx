@@ -67,14 +67,24 @@ const Container = styled.div`
     display: flex;
     justify-content: center;
     margin-top: 2rem;
+    @media screen and (max-width: 959px) {
+        flex-direction: column;
+        width: 80%;
+        margin: auto;
+        margin-top: 2rem;
+    }
+    @media screen and (max-width: 511px) {
+        flex-direction: column;
+        width: 100%;
+    }
 `
 
 const Container2 = styled.div`
     width: 40%;
     padding: 2rem;
     background-color: white;
-    @media screen and (max-width: 1024px) {
-        max-width: 90%;
+    @media screen and (max-width: 959px) {
+        width: calc(100% - 4rem);
     }
 `
 

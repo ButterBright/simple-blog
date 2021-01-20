@@ -12,20 +12,22 @@ function Header() {
     }
     return (
         <Container>
-            <Title>ButterBright</Title>
             <Container2>
+                <Title>ButterBright</Title>
                 <SubTitle>
                     Just direct your feet on the sunny side of the street.
                 </SubTitle>
+            </Container2>
+            <Container3>
                 {!username ? (
                     <Link
                         to="/login"
                         style={{ textDecoration: "none", color: "black" }}
                     >
-                        <StyledFont>login</StyledFont>
+                        <div>login</div>
                     </Link>
                 ) : (
-                    <StyledFont onClick={handleLogout}>logout</StyledFont>
+                    <div onClick={handleLogout}>logout</div>
                 )}
                 <Link to="/" style={{ textDecoration: "none", color: "black" }}>
                     <StyledFont>Home</StyledFont>
@@ -35,10 +37,10 @@ function Header() {
                         to="/editlist"
                         style={{ textDecoration: "none", color: "black" }}
                     >
-                        <div>Edit Center</div>
+                        <StyledFont>EditCenter</StyledFont>
                     </Link>
                 )}
-            </Container2>
+            </Container3>
         </Container>
     )
 }
@@ -46,22 +48,27 @@ function Header() {
 const Container = styled.div`
     background-color: white;
     height: 10%;
+    display: flex;
+    @media screen and (max-width: 959px) {
+        flex-direction: column;
+    }
 `
 
 const Container2 = styled.div`
+    flex-direction: column;
+    margin: auto;
+`
+
+const Container3 = styled.div`
     display: flex;
-    @media screen and (max-width: 1024px) {
-        flex-direction: column;
-        /* max-width: 90%; */
-        text-align: center;
-    }
+    margin: auto;
 `
 
 const Title = styled.div`
     font-family: "Major Mono Display", sans-serif;
     font-size: 30px;
-    padding: 0.5rem 17%;
-    @media screen and (max-width: 1024px) {
+    padding: 0.5rem 0;
+    @media screen and (max-width: 959px) {
         text-align: center;
     }
 `
@@ -70,11 +77,11 @@ const SubTitle = styled.div`
     font-family: "Major Mono Display", sans-serif;
     font-size: 15px;
     font-weight: bold;
-    padding: 0.3rem 17%;
+    padding: 0.3rem 0;
 `
 
 const StyledFont = styled.div`
-    margin-right: 2rem;
+    margin-left: 2rem;
     cursor: pointer;
 `
 

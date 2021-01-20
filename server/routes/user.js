@@ -47,7 +47,7 @@ router.post("/register", async (r, w) => {
         let user = new userModel({
             username: r.body.username,
             password: hashedPassword,
-            img: r.body.img,
+            img: r.body.img ? r.body.img : "https://pic3.zhimg.com/v2-7511b59b7cd73ee8a6c47a8eacd41742_b.jpg",
         })
         await user.save()
         w.status(201).json({ message: "register successfully" })

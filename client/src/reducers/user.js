@@ -4,6 +4,7 @@ const authReducer = (state = {}, action) => {
             localStorage.setItem("profile", JSON.stringify({...action?.payload}))
             return { ...state, user: action.payload }
         case "LOGOUT": 
+            localStorage.clear()
             return {}
         default:
             return state

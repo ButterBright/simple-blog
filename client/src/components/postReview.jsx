@@ -12,6 +12,10 @@ function PostReview() {
     const username = user?.username
     const img = user?.img
     function handleSubmit(id, review, author, img) {
+        // const u = JSON.parse(localStorage.getItem('profile'))?.username
+        // if (!u) {
+        //     alert("not login in!")
+        // }
         if (!user) {
             alert("please login first")
             return

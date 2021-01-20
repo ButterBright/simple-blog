@@ -12,6 +12,10 @@ function SingleEdit() {
     const [content, setContent] = useState("")
     const [title, setTitle] = useState("")
     const history = useHistory()
+    const username = useSelector(state => state.user)?.user?.username
+    if (username !== "Bright") {
+        history.push("/")
+    }
     if (!posts.posts) return <div></div>
     const post = posts.posts.filter(
         post => post._id === id.slice(1, id.length)
@@ -70,15 +74,15 @@ const StyledHeader = styled.div`
 `
 
 const Input = styled.input`
-    width: 50rem;
+    width: 80%;
     height: 2rem;
     margin-bottom: 1rem;
     font-size: 25px;
 `
 
 const Textarea = styled.textarea`
-    width: 50rem;
-    height: 35rem;
+    width: 80%;
+    height: 25rem;
     font-size: 20px;
     margin-bottom: 1rem;
 `

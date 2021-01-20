@@ -48,19 +48,19 @@ const Container2 = styled.span`
 
 const Read = styled.span`
     &:hover {
-        color: blue;
+        color: rgb(100, 200, 255);
     }
 `
 
 const Edit = styled.span`
     &:hover {
-        color: yellow;
+        color: rgb(212, 210, 84);
     }
 `
 
 const Delete = styled.span`
     &:hover {
-        color: red;
+        color: rgb(236, 56, 86);
     }
 `
 

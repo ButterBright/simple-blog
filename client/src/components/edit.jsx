@@ -3,14 +3,19 @@ import GlobalStyle from "./globalStyle"
 import axios from "axios"
 import { useState } from "react"
 import { useHistory } from "react-router-dom"
+import { useSelector } from "react-redux"
 import Header from "./header"
 // import { CKEditor } from "@ckeditor/ckeditor5-react"
 // import ClassicEditor from "@ckeditor/ckeditor5-build-classic"
 
 function Edit() {
+    const history = useHistory()
+    const username = useSelector(state => state.user)?.user?.username
+    if (username !== "Bright") {
+        history.push("/")
+    }
     const [content, setContent] = useState("")
     const [title, setTitle] = useState("")
-    const history = useHistory()
     async function handleSubmit(title, author, content, tags) {
         if (title == "" || content == "") return
         try {
@@ -38,18 +43,6 @@ function Edit() {
                 ></Input>
                 <br />
                 <Textarea onChange={e => setContent(e.target.value)}></Textarea>
-                {/* <CKEditor
-                    editor={ClassicEditor}
-                    onReady={editor => {
-                        // You can store the "editor" and use when it is needed.
-                        console.log("Editor is ready to use!", editor)
-                    }}
-                    onChange={(event, editor) => {
-                        const data = editor.getData()
-                        console.log({ event, editor, data })
-                        setContent(data)
-                    }}
-                /> */}
                 <br />
                 <Button
                     onClick={() =>
@@ -75,15 +68,15 @@ const StyledHeader = styled.div`
 `
 
 const Input = styled.input`
-    width: 50rem;
+    width: 80%;
     height: 2rem;
     margin-bottom: 1rem;
     font-size: 25px;
 `
 
 const Textarea = styled.textarea`
-    width: 50rem;
-    height: 35rem;
+    width: 80%;
+    height: 25rem;
     font-size: 20px;
     margin-bottom: 1rem;
 `

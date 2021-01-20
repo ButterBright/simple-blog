@@ -27,7 +27,7 @@ function Header() {
                         <div>login</div>
                     </Link>
                 ) : (
-                    <div onClick={handleLogout}>logout</div>
+                    <div onClick={handleLogout} style={{cursor: "pointer"}}>logout</div>
                 )}
                 <Link to="/" style={{ textDecoration: "none", color: "black" }}>
                     <StyledFont>Home</StyledFont>

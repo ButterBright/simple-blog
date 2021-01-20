@@ -2,13 +2,15 @@ import Header from "./header"
 import InfoList from "./infoList"
 import GlobalStyle from "./globalStyle"
 import styled from "styled-components"
-import { Link } from "react-router-dom"
+import { Link, useHistory } from "react-router-dom"
 import { useSelector } from "react-redux"
 
 function EditList() {
+    const history = useHistory()
     const username = useSelector(state => state.user)?.user?.username
-    if (username !== "Bright")
-        return <div>Unauthorized!</div>
+    if (username !== "Bright") {
+        history.push("/")
+    }
     return (
         <div>
             <GlobalStyle />

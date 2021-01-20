@@ -57,6 +57,9 @@ const Container = styled.div`
 const Container2 = styled.div`
     flex-direction: column;
     margin: auto;
+    @media screen and (max-width: 959px) {
+        text-align: center;
+    }
 `
 
 const Container3 = styled.div`
@@ -68,9 +71,6 @@ const Title = styled.div`
     font-family: "Major Mono Display", sans-serif;
     font-size: 30px;
     padding: 0.5rem 0;
-    @media screen and (max-width: 959px) {
-        text-align: center;
-    }
 `
 
 const SubTitle = styled.div`
